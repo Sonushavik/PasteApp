@@ -3,7 +3,8 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Paste from './components/Paste'
 import Home from './components/Home'
-import ViewPaste from './components/viewPaste'
+import ViewPaste from './components/ViewPaste'
+import Heading from './components/Heading'
 
 const router = createBrowserRouter(
   [
@@ -39,6 +40,7 @@ function App() {
 
   return (
     <>
+      <Heading/>
       <RouterProvider router={router}/>
     </>
   )

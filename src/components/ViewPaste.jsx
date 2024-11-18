@@ -1,23 +1,22 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams, useSearchParams } from "react-router-dom";
-import { addToPastes, updateToPastes } from "../redux/pasteSlice";
+import {  useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 
 
 const ViewPaste = () => {
 
   const {id} = useParams();
 
-  const allPastes = useSelector((state) => state.paste.pastes);
+  const pastes = useSelector((state) => state.paste.pastes);
 
-  const paste = allPastes.filter((p) => p._id === id)[0];
+  const paste = pastes.filter((paste) => paste._id === id)[0];
   console.log("Final paste", paste)
 
   return (
-    <div>
+    <div className="bg-blue-100">
     <div className="flex flex-row gap-7">
       <input
-        className="p-2 rounded-md text-white"
+        className="p-2 rounded-md  w-[100%] bg-blue-200 text-gray-700 font-bold border-2 border-blue-950 mt-3"
         type="text"
         placeholder="Enter title here"
         value={paste.title}
@@ -25,16 +24,11 @@ const ViewPaste = () => {
         disabled
       />
 
-      {/* <button 
-      onClick={createPaste} 
-      className="p-2 rounded-md text-white">
-        {pasteId ? "Update Paste" : "Create My Paste"}
-      </button> */}
     </div>
 
     <div>
       <textarea
-        className="rounded-md mt-4 min-w-[500px] p-4"
+        className="rounded-md mt-4 min-w-[500px] w-[100%] p-4 bg-blue-100 border border-blue-950 scrollbar-custom"
         value={paste.content}
         placeholder="enter content here "
         onChange={(e) => setValue(e.target.value)}
